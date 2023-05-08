@@ -151,6 +151,7 @@ const最强的用法是在函数声明时，如果将返回值设置成const，�
 其主要原因是如果基类没有virtual析构函数，那么派生类在析构的时候，如果是delete 了一个base基类的指针，那么派生的对象就会没有被销毁，引起内存泄漏。
 例如：
     
+
     class TimeKeeper{
         public:
         TimeKeeper();
@@ -516,6 +517,8 @@ const最强的用法是在函数声明时，如果将返回值设置成const，�
         //所有与书签相关的便利函数
     }
 
+
+
 **24. 若所有参数皆需类型转换，请为此采用non-member函数  （Declare non-member functions when type conversions should apply to all parameters)**
 
 例如想要将一个int类型变量和Rational变量做乘法，如果是成员函数的话，发生隐式转换的时候会因为不存在int到Rational的类型变换而出错：
@@ -532,6 +535,7 @@ const最强的用法是在函数声明时，如果将返回值设置成const，�
     non-member函数
     class Rational{}
     const Rational operator*(const Rational& lhs, const Rational& rhs){}
+
 
 
 **25. 考虑写出一个不抛异常的swap函数  （Consider support for a non-throwing swap)**
@@ -2729,7 +2733,7 @@ impl类的做法：之前写到过，就是把对象的成员变量替换成一�
                  typename = typename std::enable_if<condition>::type>//这里的condition只是一个代号，condition可以是：!std::is_same<Person, typename std::decay<T>::type>::value,或者是：!std::is_base_of<Person, typename std::decay<T>::type>::value&&!std::is_integral<std::remove_reference_t<T>>::value
         explicit Person(T&& n);
     }
-//说实话这个代码的可读性emmmmmmmm，大概还是我太菜了。。。。
+  //说实话这个代码的可读性emmmmmmmm，大概还是我太菜了。。。。
 
 **28. 理解引用折叠**
 
